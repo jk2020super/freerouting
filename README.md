@@ -1,5 +1,8 @@
-# 工作中～
-我正在试图把它改成我的形状，在完成任务前请不要随意下载
+# 1.3.0.1
+目前可以使用自动的转化功能，dsn到ses文件，自动布线
+java -jar free.jar -de file1.dsn -auto
+布线完成后会自动生成file1.ses文件，然后程序关闭
+
 # freerouting
 
 [ ![Download](https://api.bintray.com/packages/miho/Freerouting/freerouting/images/download.svg) ](https://bintray.com/miho/Freerouting/freerouting/_latestVersion)

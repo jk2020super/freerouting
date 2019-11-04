@@ -5,6 +5,7 @@ package eu.mihosoft.freerouting.gui;
 import eu.mihosoft.freerouting.gui.BoardFrame;
 import eu.mihosoft.freerouting.interactive.ScreenMessages.IMsgListener;
 import eu.mihosoft.freerouting.interactive.BoardHandling;
+import java.awt.Point;
 
 
 class MainApplicationAPI implements IMsgListener{
@@ -19,10 +20,16 @@ class MainApplicationAPI implements IMsgListener{
 
     public void set_msg(String msg){
         System.out.print("\nmsg:^"+msg+"^");
+        System.out.print("\n is board read only:"+handling.is_board_read_only());
         if(msg.startsWith("Postroute completed")){
+            //System.out.print("\n click to end");
+            //Point p=new Point();
+            //handling.left_button_clicked(p);
             //自动布线完成，开始保存ses
             System.out.print("\nsave ses");
+            handling.set_board_read_only(false);
             board_frame.design_file.write_specctra_session_file(board_frame);
+            System.exit(1);
         }
     }
 

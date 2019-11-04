@@ -103,6 +103,12 @@ public class MainApplication extends javax.swing.JFrame
                     Runtime.getRuntime().exit(0);
                 }
             });
+            //创建api系统
+            MainApplicationAPI api=new MainApplicationAPI(new_frame);
+            //添加自动布线调用
+            if (startupOptions.isAutoRouting()){
+                api.api_dsn2ses();
+            }
         }
         else
         {
@@ -397,5 +403,5 @@ public class MainApplication extends javax.swing.JFrame
     /**
      * Change this string when creating a new version
      */
-    static final String VERSION_NUMBER_STRING = "v1.3.0 (JDK9 version by mihosoft.eu)";
+    static final String VERSION_NUMBER_STRING = "v1.3.0.1 (auto routing JDK11 version by mihosoft.eu)";
 }

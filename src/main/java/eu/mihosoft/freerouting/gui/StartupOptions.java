@@ -11,6 +11,7 @@ public class StartupOptions {
     boolean test_version_option = false;
     boolean session_file_option = false;
     boolean webstart_option = false;
+    boolean auto_option=false;//用于自动布线的参数
     String design_file_name = null;
     String design_dir_name = null;
     java.util.Locale current_locale = java.util.Locale.ENGLISH;
@@ -55,9 +56,12 @@ public class StartupOptions {
                 webstart_option = true;
             } else if (p_args[i].startsWith("-test")) {
                 test_version_option = true;
+            } else if (p_args[i].startsWith("-auto")){
+                auto_option=true;
             }
         }
     }
+    
 
     public boolean getWebstartOption() {
         return webstart_option;
@@ -70,4 +74,10 @@ public class StartupOptions {
     public String getDesignDir() {
         return design_dir_name;
     }
+    
+    public boolean isAutoRouting(){
+        return auto_option;
+    }
+
+
 }

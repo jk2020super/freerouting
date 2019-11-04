@@ -32,7 +32,14 @@ import javax.swing.JLabel;
  */
 public class ScreenMessages
 {
-    
+    /**
+     *  消息系统监听器，用于构造外部通讯系统
+     */
+    public interface IMsgListener{
+        public void set_msg(String msg); 
+    }
+
+
     /** Creates a new instance of ScreenMessageFields */
     public ScreenMessages(JLabel p_status_field, JLabel p_add_field,
             JLabel p_layer_field, JLabel p_mouse_position, java.util.Locale p_locale)
@@ -59,6 +66,10 @@ public class ScreenMessages
         if (!this.write_protected)
         {
             status_field.setText(p_message);
+        }
+        if (listener!=null)
+        {//监听系统
+            listener.set_msg(p_message);
         }
     }
     
@@ -166,6 +177,11 @@ public class ScreenMessages
     {
         write_protected = p_value;
     }
+
+    public void set_listener(IMsgListener l)
+    {
+        listener=l;
+    }
     
     private final java.util.ResourceBundle resources;
     private final java.util.Locale locale;
@@ -179,6 +195,7 @@ public class ScreenMessages
     private JLabel mouse_position;
     private String prev_target_layer_name = empty_string;
     private boolean write_protected = false;
+    private IMsgListener listener;//系统监听器
     
     /** The number format for displaying the trace lengtht */
     private final java.text.NumberFormat number_format;
